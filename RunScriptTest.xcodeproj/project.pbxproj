@@ -143,7 +143,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"srcroot: ${SRCROOT}\"\necho \"project dir: ${PROJECT_DIR}\"\necho \"plist path: ${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\nbuildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\ngit add .\ngit commit -m \"build # $buildNumber\"\ngit tag build_$buildNumber\ngit push --tags";
+			shellScript = "buildNumber=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\")\nbuildNumber=$(($buildNumber + 1))\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${PROJECT_DIR}/${INFOPLIST_FILE}\"\n\ngit add .\ngit commit -m \"build #$buildNumber\"\ngit tag build_$buildNumber\ngit push --tags";
 		};
 /* End PBXShellScriptBuildPhase section */
 
